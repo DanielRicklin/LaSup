@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head'); %>
+  </head>
+  <body>
+    <%- include('./partials/navbar'); %>
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+              <th>Nom</th>
+              <th>IP</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% equipments.forEach(function(equipment){ %>
+            <tr>
+              <td><%= equipment.name %></td>
+              <td><%= equipment.ip %></td>
+              <td><a href="/equipment/<%=equipment._id%>" class="btn waves-effect waves-light">Supervision</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
