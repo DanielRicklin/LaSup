@@ -1,6 +1,7 @@
 const alerts = document.querySelector('#alerts')
 const createEquipmentButton = document.querySelector('#createEquipment')
 const getInterfacesButton = document.querySelector('#addInterface')
+const deleteEquipmentButton = document.querySelectorAll('#deleteEquipmentButton')
 const ModalInterface = document.querySelector('#modalInterface')
 const charts = document.querySelector('#latences')
 
@@ -60,6 +61,20 @@ if(getInterfacesButton){
     })
 }
 
+if(deleteEquipmentButton){
+    deleteEquipmentButton.forEach(deb => {
+        deb.addEventListener('click', () => {
+            axios.delete(
+                `/equipment/${deb.dataset.id}`
+            ).then((response) => {
+                deb.parentNode.parentNode.remove()
+            }).catch((err) => {
+                console.error(err.response.data.error)
+            })
+        })  
+    })
+}
+
 if(charts){
     const latence = []
     const pertes = []
@@ -67,7 +82,6 @@ if(charts){
     axios.get(
         `/equipment/${document.querySelector('#id').value}/data`
     ).then(response => {
-        console.log(response.data)
         response.data.forEach(res => {
             let latency = Math.floor((Math.round(res.latency * 100)).toFixed(2))/100
             latence.push({date: new Date(res.createdAt), value: latency}) //faut enlever ce value pour coupeur le graph quand y'a des coupures

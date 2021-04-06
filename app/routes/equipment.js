@@ -19,6 +19,7 @@ router.get('/:ip/interfaces', equipmentController.getInterfaces);
 router.get('/:id/data', equipmentController.getData);
 
 router.get('/:id', equipmentController.getOne);
+router.delete('/:id', equipmentController.deleteEquipment);
 
 
 module.exports = router;

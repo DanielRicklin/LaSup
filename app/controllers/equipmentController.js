@@ -59,8 +59,8 @@ exports.getInterfaces = function(req, res){
 
 exports.getData = function(req, res){
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    let dateaez = new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"})
-    console.log(new Date(dateaez).getHours())
+    // let dateaez = new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"})
+    // console.log(new Date(dateaez).getHours())
     // console.log(setHourPerso(new Date().toLocaleString("fr-FR", {timeZone: "Europe/Paris"}), 8))
     let data = Ping.find({'equipment': req.params.id}) //, createdAt: {$gte: new Date().setHours, $lt: new Date()}}
     .select("latency createdAt ip")
@@ -69,6 +69,20 @@ exports.getData = function(req, res){
         let latencyCache = []
         let pertesCache = []
         let last = 0
+        // pings.forEach(ping => {
+        //     if(new Date(ping.createdAt).getSeconds() > last) {
+        //         latencyCache.push(ping.latency !== 'unknown' ? Math.floor((Math.round(ping.latency * 100)).toFixed(2))/100 : 0)
+        //         pertesCache.push(ping.latency == 'unknown' ? 1 : 0)
+        //         last = new Date(ping.createdAt).getSeconds()
+        //     } else {
+        //         last = 0
+        //         let moyenneLatency = latencyCache.reduce(reducer) / latencyCache.length
+        //         let moyennePertes = pertesCache.reduce(reducer) / pertesCache.length
+        //         resultat.push({latency: moyenneLatency, createdAt: new Date(ping.createdAt).setSeconds(0), pertes: moyennePertes})
+        //         latencyCache = []
+        //         pertesCache = []
+        //     }
+        // })
         pings.forEach(ping => {
             if(new Date(ping.createdAt).getSeconds() > last) {
                 latencyCache.push(ping.latency !== 'unknown' ? Math.floor((Math.round(ping.latency * 100)).toFixed(2))/100 : 0)
@@ -83,6 +97,29 @@ exports.getData = function(req, res){
                 pertesCache = []
             }
         })
+
+        // console.log(resultat.length)
+
+        // last = 1
+        // resultat.forEach(res => {
+        //     if(Math.floor(resultat.length) > last){
+        //         last += 1
+
+        //     } else {
+        //         last = 1
+
+        //     }
+        // })
         return res.status(200).json(resultat)
     }).catch(err => console.log)
+}
+
+exports.deleteEquipment = async function(req, res){
+    try{
+        await Ping.deleteMany({'equipment': req.params.id})
+        await Equipment.deleteOne({'_id': req.params.id})
+        return res.status(200).json('Ouiiiiii')
+    }catch (error){
+        return res.status(500).json('ALED')
+    }
 }

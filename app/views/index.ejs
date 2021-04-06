@@ -20,7 +20,10 @@
             <tr>
               <td><%= equipment.name %></td>
               <td><%= equipment.ip %></td>
-              <td><a href="/equipment/<%=equipment._id%>" class="btn waves-effect waves-light">Supervision</a></td>
+              <td>
+                <a href="/equipment/<%=equipment._id%>" class="btn waves-effect waves-light">Supervision</a>
+                <button class="btn waves-effect waves-light red" data-id=<%=equipment._id%> id="deleteEquipmentButton">Supprimer</button>
+              </td>
             </tr>
           <% }); %>
         </tbody>
