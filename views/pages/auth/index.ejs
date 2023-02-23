@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../../partials/head'); %>
+  </head>
+  <body class="h-screen">
+    <%- include('../../partials/navbar'); %>
+
+    <div class="grid justify-items-stretch content-center h-1/2">
+      <div class="justify-self-center">
+        <%- include(`./${page}`); %> 
+      </div>
+    </div>
+  </body>
+</html>

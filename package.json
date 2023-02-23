@@ -1,0 +1,36 @@
+{
+  "name": "snmp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "css": "npx tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/style.css --watch",
+    "uglify": "cleancss -o ./public/stylesheets/style.min.css ./public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
+    "cookie-parser": "~1.4.4",
+    "daisyui": "^2.50.2",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.9.2",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^5.11.11",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-auth0": "^1.4.3",
+    "ping": "^0.3.0",
+    "pm2": "^5.2.2",
+    "snmp-native": "^1.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}

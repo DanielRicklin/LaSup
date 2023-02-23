@@ -1,0 +1,22 @@
+<div class="row red darken-3 z-depth-4" style="display: none; margin-top: 20px; border-radius: 10px;">
+    <div class="col s12 m12 l12" id="alerts" style="position: relative; padding: 10px 0px;"></div>
+</div>
+<h1 class="text-4xl text-center">Connexion</h1>
+<div class="w-80 mt-8">
+    <form method="post" action="/auth/signin">
+        <label class="label">
+            <span class="label-text">Email</span>
+        </label>
+        <input placeholder="john.doe@email.com" class="input input-bordered w-full max-w-xs" name="email" type="email" />
+        <label class="label">
+            <span class="label-text">Mot de passe</span>
+        </label>
+        <input placeholder="••••••••" class="input input-bordered w-full max-w-xs" name="password" type="password"/>
+        
+        <% if (error) { %>
+            <p style="color:red;"><%= error %></p>
+        <% } %>
+
+        <button class="btn btn-outline btn-info mt-6 w-full" type="submit">Connexion</button>
+    </form>
+</div>

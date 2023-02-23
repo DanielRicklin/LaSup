@@ -1,0 +1,50 @@
+<% if (error) { %>
+    <!-- <h2>Erreur 404 🤷‍♂️🤷‍♂</h2> -->
+    <%= error %>
+<% } else { %>
+    <!-- <div class="row" style="padding: 20px 0px;">
+        <div class="row">
+            <form class="col s12" method="POST" action="/users/profile" id="test">
+                <div class="col s12 m6 l6">
+                    <div class="input-field col s12">
+                        <input value="<%= user.local.email %>" id="email" type="text" class="validate" name="email" readonly>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input value="<%= user.username %>" id="username" type="text" class="validate" name="username">
+                        <label for="username">Nom</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input class="validate" type="password" name="password" />
+                        <label for="password">Nouveau Mot de passe</label>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light btn teal darken-3" type="submit">Mettre à jour</button>
+            </form>
+        </div>
+    </div> -->
+
+    <h1 class="text-4xl text-center">Profile</h1>
+    <div class="w-80 mt-8">
+        <form method="POST" action="/users/profile" id="test">
+            <label class="label">
+                <span class="label-text">Email</span>
+            </label>
+            <input value="<%= user.local.email %>" class="input input-bordered w-full" id="email" name="email" type="email" readonly/>
+            <label class="label">
+                <span class="label-text">Nom</span>
+            </label>
+            <input value="<%= user.username %>" class="input input-bordered w-full" id="username" name="username" type="text"/>
+            <label class="label">
+                <span class="label-text">Nouveau mot de passe</span>
+            </label>
+            <input placeholder="monmeilleurmotdepasse123" class="input input-bordered w-full" name="password" type="password"/>
+            
+            <% if (error) { %>
+                <p style="color:red;"><%= error %></p>
+            <% } %>
+
+            <button class="btn btn-outline btn-info mt-6 w-full" type="submit">Mettre à jour</button>
+        </form>
+    </div>
+<% } %>

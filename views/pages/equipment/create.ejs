@@ -1,0 +1,49 @@
+<div class="grid justify-items-stretch content-center h-4/5">
+  <div class="justify-self-center">
+
+    <div class="row red darken-3 z-depth-4" style="display: none; margin-top: 20px; border-radius: 10px;">
+        <div class="col s12 m12 l12" id="alerts" style="position: relative; padding: 10px 0px;"></div>
+    </div>
+    <h1 class="text-4xl text-center">Ajouter un équipement</h1>
+    <div class="w-80 mt-8 w-full">
+      <form>
+        <!-- <div class="row">
+          <div class="input-field col s6">
+            <input id="name" type="text" class="validate" name="name">
+            <label for="name">Nom</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="ip" type="text" class="validate" name="ip">
+            <label for="ip">Adresse IP</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="description" class="materialize-textarea" name="description"></textarea>
+            <label for="description">Description</label>
+          </div>
+        </div> -->
+        <div class="w-full">
+          <label class="label">
+              <span class="label-text">Nom</span>
+          </label>
+          <input placeholder="Serveur AD" class="input input-bordered w-full" name="name" id="name" type="text" />
+        </div>
+        <div class="w-full">
+          <label class="label">
+              <span class="label-text">Adresse IP</span>
+          </label>
+          <input placeholder="192.168.1.1" class="input input-bordered w-full" name="ip" id="ip" type="text" />
+        </div>
+        <div class="w-full">
+          <label class="label">
+              <span class="label-text">Description</span>
+          </label>
+          <textarea class="textarea textarea-bordered w-full" placeholder="blablabla" name="description" id="description"></textarea>
+        </div>
+
+        <button class="btn btn-outline btn-success mt-4 w-full" id="createEquipment" type="button">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head'); %>
+  </head>
+  <body>
+    <%- include('./partials/navbar'); %>
+    <div class="container mx-auto">
+
+      <div class="overflow-x-auto">
+        <table class="table table-fixed w-full">
+          <thead>
+            <tr>
+                <th>Nom</th>
+                <th>IP</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <% equipments.forEach(function(equipment){ %>
+              <tr>
+                <td><%= equipment.name %></td>
+                <td><%= equipment.ip %></td>
+                <td>
+                  <a href="/equipment/<%=equipment._id%>" class="btn btn-outline btn-info">Supervision</a>
+                  <button class="btn btn-error" data-id=<%=equipment._id%> id="deleteEquipmentButton">Supprimer</button>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
